@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
-const baseURL = process.env.TEST_BASE_URL || 'http://127.0.0.1:5173';
+const baseURL = process.env.TEST_BASE_URL || 'http://127.0.0.1:5173/nan-studio/';
 const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', headless: true, args: ['--no-sandbox'] });
 process.on('exit', () => browser.close());
 

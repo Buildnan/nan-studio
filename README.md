@@ -20,7 +20,7 @@ npm run preview
 
 انشر محتويات `dist/` على استضافة ملفات ثابتة مثل Cloudflare Pages أو Netlify أو Vercel. أمر البناء `npm run build` ومجلد الإخراج `dist`. لا توجد خدمات خلفية أو مفاتيح API مطلوبة. عند النشر ضمن مسار فرعي، اضبط `base` في `vite.config.ts`.
 
-قبل النشر العام أضف رابط الدومين النهائي إلى canonical و`og:url` في `index.html`، واجعل `og:image` رابطًا مطلقًا لصورة `public/og-image.png`. لا توجد روابط نطاق وهمية في النسخة الحالية.
+النشر التلقائي عبر `.github/workflows/deploy-pages.yml` عند كل push إلى `main`. من إعدادات المستودع اختر Settings → Pages → Source: GitHub Actions. الرابط المستهدف: https://buildnan.github.io/nan-studio/. إعداد Vite `base` مضبوط على `/nan-studio/`، ووسوم canonical وOpen Graph تستخدم عنوان GitHub Pages. عند الانتقال إلى دومين مستقل عدّل هذه القيم.
 
 ## الإعدادات والمحتوى
 
@@ -66,7 +66,7 @@ tests/site.test.mjs
 
 ```bash
 npm run dev -- --port 5173
-npm test
+TEST_BASE_URL=http://127.0.0.1:5173/nan-studio/ npm test
 ```
 
 الاختبارات تستخدم Chromium في `/usr/bin/chromium`. لتغيير عنوان الخادم استخدم `TEST_BASE_URL`. تفحص RTL، الأقسام، التنقل، قائمة الجوال، تفاصيل الأعمال وإغلاقها بـEscape، رابط Snapchat، تعطيل البريد المؤقت، دعم reduced-motion، أخطاء console، وعدم تجاوز عرض الشاشة عند 360 و390 و768 و1024 و1920 بكسل. فتح صفحة Snapchat الخارجية يخضع لاتصال الشبكة ولا تثبته اختبارات الرابط الداخلية.
