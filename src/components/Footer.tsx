@@ -1,0 +1,2 @@
+import { Wordmark } from './Shared';
+export default function Footer() { return <footer className="site-footer container"><div className="footer-main"><a href="#home" aria-label="العودة إلى الرئيسية"><Wordmark /></a><p>نصمم. نطوّر. نحلّل. نصنع أثرًا.</p><a href="#home" className="back-top">إلى الأعلى <span aria-hidden="true">↑</span></a></div><div className="footer-bottom"><span dir="ltr">© {new Date().getFullYear()} NAN STUDIO</span><span dir="ltr">DESIGN × CODE × DATA × AI</span><span>صُنع بشغف. بُني للمستقبل.</span></div></footer>; }

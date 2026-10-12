@@ -1,0 +1,1 @@
+export default function Marquee() { return <div className="marquee" dir="ltr" aria-label="NAN STUDIO — WEB EXPERIENCES — UI/UX — DATA — AI"><div className="marquee-track" aria-hidden="true">{[0,1,2,3].map(i => <span key={i}>NAN STUDIO <b>✳︎</b> WEB EXPERIENCES <b>✳︎</b> UI/UX <b>✳︎</b> DATA <b>✳︎</b> AI <b>✳︎</b></span>)}</div></div>; }
