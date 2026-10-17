@@ -1,0 +1,38 @@
+name: Install UI UX Pro Max for Codex
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/install-uiux-pro-max.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  install-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install UI UX Pro Max skill for Codex
+        run: npx --yes ui-ux-pro-max-cli@latest init --ai codex
+
+      - name: Commit generated Codex skill
+        shell: bash
+        run: |
+          if git status --porcelain .agents/skills/ui-ux-pro-max | grep .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .agents/skills/ui-ux-pro-max
+            git commit -m "chore: install UI UX Pro Max Codex skill"
+            git push
+          else
+            echo "UI UX Pro Max is already up to date."
+          fi
