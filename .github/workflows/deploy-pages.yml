@@ -27,6 +27,13 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Build site
         run: npm run build
+      - name: Include social preview assets and share pages
+        run: |
+          mkdir -p dist/share
+          cp nan-studio-whatsapp.jpg dist/nan-studio-whatsapp.jpg
+          cp nan-studio-logo.png dist/nan-studio-logo.png
+          cp share.html dist/share.html
+          cp share/index.html dist/share/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
