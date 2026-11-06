@@ -143,12 +143,13 @@ html{scroll-padding-top:105px}
   #process .step,#process .step:hover{transform:none!important;transition:none!important}
 }
 
-/* Upcoming services: soft blur with a clear availability label. */
-#services .service-coming{position:relative;overflow:hidden}
-#services .service-coming-content{filter:blur(2px);opacity:.48;user-select:none}
-#services .service-coming-badge{position:absolute;inset:0;display:grid;place-items:center;color:#f7f3ff;font-size:20px;font-weight:700;text-shadow:0 2px 16px #08070b}
-#services .service-coming-badge::before{content:"";position:absolute;width:98px;height:42px;border-radius:99px;background:rgba(35,21,49,.86);border:1px solid #aa79e288;z-index:-1}
-#services .service-coming-badge{isolation:isolate}
+/* Upcoming services: centered glass badge. */
+#services .service-coming{position:relative;overflow:hidden;isolation:isolate}
+#services .service-coming-content{filter:blur(2.5px);opacity:.36;user-select:none}
+#services .service-coming::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(127,77,181,.14),rgba(13,9,20,.18) 75%);pointer-events:none;z-index:1}
+#services .service-coming-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:11px 25px;border-radius:16px;border:1px solid rgba(220,194,255,.58);background:linear-gradient(135deg,rgba(99,62,139,.88),rgba(30,20,43,.95));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-size:19px;font-weight:700;line-height:1.5;box-shadow:0 8px 28px #0005,inset 0 1px 0 #ffffff25,0 0 24px #b480ed22;pointer-events:none}
+#services .service-coming-badge::before{content:"";width:7px;height:7px;flex:none;border-radius:50%;background:#e0c5ff;box-shadow:0 0 12px #c190ff}
+@media(max-width:600px){#services .service-coming-badge{font-size:16px;padding:9px 18px;border-radius:13px;gap:8px}}
 </style><style>
 /* Portfolio artwork supplied by NAN STUDIO */
 .work-art.actual-art{height:340px;background:#15101c;display:block}
